@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import React, { Component } from 'react'
+import { Button, Form } from 'react-bootstrap'
 
-class SignIn extends Component {
+class SignUp extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        passwordConfirmation: ""
     }
 
     handleOnChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
+
     }
 
     render() {
@@ -20,9 +22,8 @@ class SignIn extends Component {
                 <Form.Group>
                     <Form.Control
                         type="text"
-                        placeholder="Username"
-                        className="form"
                         name="username"
+                        placeholder="Username"
                         onChange={this.handleOnChange}
                         value={this.state.username}
                     />
@@ -30,17 +31,25 @@ class SignIn extends Component {
                 <Form.Group>
                     <Form.Control
                         type="password"
-                        placeholder="Password"
-                        className="form"
                         name="password"
+                        placeholder="Password"
                         onChange={this.handleOnChange}
                         value={this.state.password}
                     />
                 </Form.Group>
-                <Button>Sign In</Button>
+                <Form.Group>
+                    <Form.Control
+                        type="password"
+                        name="passwordConfirmation"
+                        placeholder="Confirm Password"
+                        onChange={this.handleOnChange}
+                        value={this.state.passwordConfirmation}
+                    />
+                </Form.Group>
+                <Button>Create Account</Button>
             </Form>
         )
     }
 }
 
-export default SignIn;
+export default SignUp;
