@@ -6,7 +6,8 @@ class SignUp extends Component {
     state = {
         username: "",
         password: "",
-        passwordConfirmation: ""
+        passwordConfirmation: "",
+        errors: ""
     }
 
     handleOnChange = (event) => {

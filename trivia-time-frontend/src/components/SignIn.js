@@ -5,7 +5,8 @@ class SignIn extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        errors: ""
     }
 
     handleOnChange = (event) => {
