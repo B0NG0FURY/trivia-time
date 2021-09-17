@@ -4,7 +4,7 @@ class UsersController < ApplicationController
         user = User.create(user_params)
         if user.save
             session[:user_id] = user.id
-            console.log(session[:user_id])
+            puts session[:user_id]
             render json: {
                 status: :created,
                 user: user
