@@ -14,7 +14,25 @@ class SignUp extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
+    }
 
+    submitForm = (event) => {
+        event.preventDefault();
+        configObject = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({
+                "user": {
+                    "username": this.state.username,
+                    "password": this.state.password,
+                    "password_confirmation": this.state.passwordConfirmation
+                }
+            })
+        }
+        fetch("http://localhost:3001", configObject).then(resp => resp.json()).then(info => console.log(info))
     }
 
     render() {
@@ -47,7 +65,7 @@ class SignUp extends Component {
                         value={this.state.passwordConfirmation}
                     />
                 </Form.Group>
-                <Button>Create Account</Button>
+                <Button onClick={this.submitForm}>Create Account</Button>
             </Form>
         )
     }

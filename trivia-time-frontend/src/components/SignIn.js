@@ -15,6 +15,22 @@ class SignIn extends Component {
         })
     }
 
+    submitForm = (event) => {
+        event.preventDefault();
+        configObject = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({
+                "username": this.state.username,
+                "password": this.state.password
+            })
+        }
+        fetch("http://localhost:3001", configObject).then(resp => resp.json()).then(info => console.log(info))
+    }
+
     render() {
         return(
             <Form>
@@ -38,7 +54,7 @@ class SignIn extends Component {
                         value={this.state.password}
                     />
                 </Form.Group>
-                <Button>Sign In</Button>
+                <Button onClick={this.submitForm}>Sign In</Button>
             </Form>
         )
     }
