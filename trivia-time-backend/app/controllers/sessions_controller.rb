@@ -17,9 +17,19 @@ class SessionsController < ApplicationController
         end
     end
 
-    def destroy
+    def delete
         session.delete(:user_id)
         puts session[:user_id]
+        if !session[:user_id]
+            render json: {
+                logged_in: false,
+                status: "successfully logged out"
+            }
+        else
+            render json: {
+                error: "could not logout"
+            }
+        end
     end
 
 end

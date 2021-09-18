@@ -18,7 +18,7 @@ class SignUp extends Component {
 
     submitForm = (event) => {
         event.preventDefault();
-        configObject = {
+        const configObject = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -32,7 +32,7 @@ class SignUp extends Component {
                 }
             })
         }
-        fetch("http://localhost:3001", configObject).then(resp => resp.json()).then(info => console.log(info))
+        fetch("http://localhost:3001/users", configObject).then(resp => resp.json()).then(info => console.log(info))
     }
 
     render() {
