@@ -7,7 +7,8 @@ class UsersController < ApplicationController
             puts session[:user_id]
             render json: {
                 status: :created,
-                user: UserSerializer.new(user).to_serialized_json
+                logged_in: true,
+                user: user
             }
         else
             render json: {
