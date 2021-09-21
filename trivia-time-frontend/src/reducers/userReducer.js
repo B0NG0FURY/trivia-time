@@ -10,7 +10,7 @@ export default function userReducer(
         case "ADD_USER":
             return {
                 ...state,
-                logged_in: true,
+                logged_in: action.user.logged_in,
                 username: action.user.username,
                 id: action.user.id
             };

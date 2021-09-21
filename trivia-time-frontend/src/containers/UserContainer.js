@@ -5,7 +5,7 @@ import Link from 'react-router-dom/Link';
 class UserContainer extends Component {
     render() {
         return(
-            this.props.logged_in ? <div><h1>Hello</h1></div>
+            this.props.user.logged_in ? <div><h1>Hello</h1></div>
             : <div>
                 <h1>
                     You Need To Sign In Or Create An Account to View This Page

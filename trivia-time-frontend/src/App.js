@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
 import Welcome from './containers/Welcome';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
@@ -13,11 +14,12 @@ class App extends Component {
         <h1>Trivia Time</h1>
         <Router>
           <Route exact path="/" component={Welcome} />
-          <Route exact path="/login" component={SignIn} />
+          <Route exact path="/login"
+            render={routerProps => <SignIn />} />
           <Route exact path="/signup" component={SignUp} />
           <Route 
             exact path="/user"
-            render={routerProps => <UserContainer logged_in={this.props.store.getState().logged_in} />}
+            render={routerProps => <UserContainer user={this.props.user} />}
           />
         </Router>
       </div>
@@ -25,4 +27,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state
+  }
+}
+
+export default connect(mapStateToProps)(App);
