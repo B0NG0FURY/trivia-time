@@ -54,10 +54,14 @@ class SignUp extends Component {
         })
     }
 
+    handleErrors = () => {
+        return this.state.errors.map(error => <li>{error}</li>)
+    }
+    
     render() {
         return(
             <div>
-                { this.state.errors ? this.handleErrors : null}
+                { this.state.errors ? this.handleErrors : null }
                 <Form onSubmit={this.handleSubmit} >
                     <Form.Group>
                         <Form.Control
