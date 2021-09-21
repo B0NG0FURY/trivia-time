@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import React, { Component } from 'react';
+import { Form } from 'react-bootstrap';
 
 class SignUp extends Component {
 
     state = {
         username: "",
         password: "",
-        passwordConfirmation: "",
-        errors: ""
+        passwordConfirmation: ""
     }
 
     handleOnChange = (event) => {
@@ -16,7 +15,7 @@ class SignUp extends Component {
         })
     }
 
-    submitForm = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
         const configObject = {
             method: "POST",
@@ -37,7 +36,7 @@ class SignUp extends Component {
 
     render() {
         return(
-            <Form>
+            <Form onSubmit={this.handleSubmit} >
                 <Form.Group>
                     <Form.Control
                         type="text"
@@ -65,7 +64,7 @@ class SignUp extends Component {
                         value={this.state.passwordConfirmation}
                     />
                 </Form.Group>
-                <Button onClick={this.submitForm}>Create Account</Button>
+                <Form.Control type="submit" value="Create Account" />
             </Form>
         )
     }
