@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import Link from 'react-router-dom/Link';
 
-export default class Welcome extends Component {
+class UserContainer extends Component {
     render() {
         return(
-            <div >
-                <h1>Welcome To Trivia Time</h1>
+            this.props.logged_in ? <div><h1>Hello</h1></div>
+            : <div>
+                <h1>
+                    You Need To Sign In Or Create An Account to View This Page
+                </h1>
                 <Link to="/login">
                     <Button>Log In</Button>
                 </Link>
@@ -18,3 +21,5 @@ export default class Welcome extends Component {
         )
     }
 }
+
+export default UserContainer;

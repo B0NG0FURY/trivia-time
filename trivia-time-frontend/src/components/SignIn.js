@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import addUser from './actions/addUser';
 
 class SignIn extends Component {
 
@@ -60,4 +62,18 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+const mapStateToProps = state => {
+    return {
+      user: state
+    };
+  }
+
+const mapDispatchToProps = dispatch => {
+    return {
+      addUser: (user) => {
+        dispatch(addUser(user))
+      }
+    };
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

@@ -1,4 +1,4 @@
-function userReducer(
+export default function userReducer(
     state = {
         logged_in: false,
         username: "",
@@ -15,9 +15,15 @@ function userReducer(
                 id: action.user.id
             };
 
+        case "REMOVE_USER":
+            return {
+                ...state,
+                logged_in: false,
+                username: "",
+                id: ""
+            };
+
         default:
             return state;
     }
 }
-
-export default userReducer;
