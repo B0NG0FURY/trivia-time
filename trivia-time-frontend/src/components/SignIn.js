@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addUser } from '../actions/addUser';
 import { Redirect } from 'react-router-dom';
@@ -17,7 +17,7 @@ class SignIn extends Component {
         })
     }
 
-    submitForm = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
         const configObject = {
             method: "POST",
@@ -56,7 +56,7 @@ class SignIn extends Component {
         return(
             <div>
                 {this.state.errors ? <li>{this.state.errors}</li> : null}
-                <Form>
+                <Form onSubmit={this.handleSubmit} >
                     <Form.Group>
                         <Form.Control
                             type="text"
@@ -77,7 +77,7 @@ class SignIn extends Component {
                             value={this.state.password}
                         />
                     </Form.Group>
-                    <Button onClick={this.submitForm}>Sign In</Button>
+                    <Form.Control type="submit" value="Sign In" />
                 </Form>
                 {this.state.redirect ? <Redirect to={this.state.redirect} /> : null}
             </div>
