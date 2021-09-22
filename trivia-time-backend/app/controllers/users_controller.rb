@@ -8,7 +8,10 @@ class UsersController < ApplicationController
             render json: {
                 status: :created,
                 logged_in: true,
-                user: user
+                user: {
+                    username: user.username,
+                    id: user.id
+                }
             }
         else
             render json: {

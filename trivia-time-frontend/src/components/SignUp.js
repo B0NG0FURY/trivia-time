@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addUser } from '../actions/addUser';
+import { Redirect } from 'react-router-dom';
 
 class SignUp extends Component {
 
@@ -37,7 +38,7 @@ class SignUp extends Component {
             if (resp.user) {
                 let user = {
                     logged_in: resp.logged_in,
-                    user: resp.user.username,
+                    username: resp.user.username,
                     id: resp.user.id
                 };
                 this.props.addUser(user);
@@ -61,7 +62,7 @@ class SignUp extends Component {
     render() {
         return(
             <div>
-                { this.state.errors ? this.handleErrors : null }
+                { this.state.errors ? this.handleErrors() : null }
                 <Form onSubmit={this.handleSubmit} >
                     <Form.Group>
                         <Form.Control
