@@ -8,6 +8,12 @@ class NewGame extends Component {
         numberOfQuestions: ""
     };
 
+    handleOnChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     render() {
         return(
             <div className="new-game">
@@ -15,7 +21,7 @@ class NewGame extends Component {
                 <Form>
                     <Form.Group>
                         <Form.Label>Category</Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" name="category" onChange={this.handleOnChange}>
                             <option>Select Category</option>
                             <option value="">Any Category</option>
                             <option value="9">General Knowledge</option>
@@ -33,7 +39,7 @@ class NewGame extends Component {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Difficulty</Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" name="difficulty" onChange={this.handleOnChange}>
                             <option>Select Difficulty</option>
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
@@ -42,7 +48,7 @@ class NewGame extends Component {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Number Of Questions</Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" name="numberOfQuestions" onChange={this.handleOnChange}>
                             <option>Select Amount</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
@@ -50,6 +56,7 @@ class NewGame extends Component {
                             <option value="20">20</option>
                         </Form.Control>
                     </Form.Group>
+                    <Form.Control type="submit" style={{backgroundColor: "blue", color: "white"}} value="Start Game" />
                 </Form>
             </div>
         )
