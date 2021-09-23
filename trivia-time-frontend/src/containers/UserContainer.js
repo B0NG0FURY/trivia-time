@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
-import Link from 'react-router-dom/Link';
+import { Route, Link } from 'react-router-dom';
 import User from '../components/User';
+import NewGame from '../components/NewGame';
 
 class UserContainer extends Component {
     render() {
         return(
-            this.props.user.logged_in ? <User user={this.props.user} />
+            this.props.user.logged_in ? 
+            <div className="App-header">
+                <User user={this.props.user} />
+                <Route path={`${this.props.match.url}/game/new`} component={NewGame} />
+            </div>
             : <div>
                 <h1>
                     You Need To Sign In Or Create An Account to View This Page

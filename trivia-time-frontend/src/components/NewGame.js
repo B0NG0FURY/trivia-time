@@ -6,16 +6,16 @@ class NewGame extends Component {
         category: "",
         difficulty: "",
         numberOfQuestions: ""
-    }
+    };
 
     render() {
         return(
-            <div>
+            <div className="new-game">
                 <h3>Start A New Game</h3>
                 <Form>
                     <Form.Group>
                         <Form.Label>Category</Form.Label>
-                        <Form.Select>
+                        <Form.Control as="select">
                             <option>Select Category</option>
                             <option value="">Any Category</option>
                             <option value="9">General Knowledge</option>
@@ -27,31 +27,33 @@ class NewGame extends Component {
                             <option value="17">Science/Nature</option>
                             <option value="21">Sports</option>
                             <option value="23">History</option>
-                            <option value="25">History</option>
+                            <option value="25">Art</option>
                             <option value="27">Animals</option>
-                        </Form.Select>
+                        </Form.Control>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Difficulty</Form.Label>
-                        <Form.Select>
+                        <Form.Control as="select">
                             <option>Select Difficulty</option>
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="hard">Hard</option>
-                        </Form.Select>
+                        </Form.Control>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Number Of Questions</Form.Label>
-                        <Form.Select>
+                        <Form.Control as="select">
                             <option>Select Amount</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
-                        </Form.Select>
+                        </Form.Control>
                     </Form.Group>
                 </Form>
             </div>
         )
     }
 }
+
+export default NewGame;
