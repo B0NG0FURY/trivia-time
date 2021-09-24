@@ -19,13 +19,33 @@ class NewGame extends Component {
         event.preventDefault();
         const BASE_URL = "https://opentdb.com/api.php?";
         let NEW_GAME_URL;
+
         if (this.state.category === "") {
             NEW_GAME_URL = `${BASE_URL}amount=${this.state.numberOfQuestions}&difficulty=${this.state.difficulty}&type=multiple`;
-            console.log(NEW_GAME_URL);
         } else {
             NEW_GAME_URL = `${BASE_URL}amount=${this.state.numberOfQuestions}&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`;
-            console.log(NEW_GAME_URL);
         }
+
+        fetch(`${NEW_GAME_URL}`).then(resp => resp.json()).then(resp => {
+            let configObject = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify({
+                    "category": {
+                        "name": resp["results"][0]["category"]
+                    },
+                    "game": {
+                        "difficulty": resp["results"][0]["difficulty"],
+                        "questions_attributes": [
+                            {}
+                        ]
+                    }
+                })
+            }
+        })
         fetch(`${BASE_URL}amount=5&category=9&difficulty=medium&type=multiple`).then(resp => resp.json()).then(resp => console.log(resp["results"].map(question => he.decode(question.question))))
     }
 
