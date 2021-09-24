@@ -6,9 +6,16 @@ import App from './App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import userReducer from './reducers/userReducer';
+import gameReducer from './reducers/gameReducer';
+import { combineReducers } from 'redux';
 import reportWebVitals from './reportWebVitals';
 
-const store = createStore(userReducer);
+const rootReducer = combineReducers({
+  user: userReducer,
+  game: gameReducer
+})
+
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
