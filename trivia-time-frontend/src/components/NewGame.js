@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
+import he from 'he';
 
 class NewGame extends Component {
     state = {
@@ -14,11 +15,25 @@ class NewGame extends Component {
         })
     }
 
+    handleOnSubmit = (event) => {
+        event.preventDefault();
+        const BASE_URL = "https://opentdb.com/api.php?";
+        let NEW_GAME_URL;
+        if (this.state.category === "") {
+            NEW_GAME_URL = `${BASE_URL}amount=${this.state.numberOfQuestions}&difficulty=${this.state.difficulty}&type=multiple`;
+            console.log(NEW_GAME_URL);
+        } else {
+            NEW_GAME_URL = `${BASE_URL}amount=${this.state.numberOfQuestions}&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`;
+            console.log(NEW_GAME_URL);
+        }
+        fetch(`${BASE_URL}amount=5&category=9&difficulty=medium&type=multiple`).then(resp => resp.json()).then(resp => console.log(resp["results"].map(question => he.decode(question.question))))
+    }
+
     render() {
         return(
             <div className="new-game">
                 <h3>Start A New Game</h3>
-                <Form>
+                <Form onSubmit={this.handleOnSubmit}>
                     <Form.Group>
                         <Form.Label>Category</Form.Label>
                         <Form.Control as="select" name="category" onChange={this.handleOnChange}>
