@@ -39,14 +39,18 @@ class NewGame extends Component {
                     },
                     "game": {
                         "difficulty": resp["results"][0]["difficulty"],
-                        "questions_attributes": [
-                            {}
-                        ]
+                        "questions_attributes": resp["results"].map(result => {
+                            return {
+                                "text": he.decode(result.question),
+                                "correct_answer": he.decode(result.correct_answer),
+                                "incorrect_answers": result.incorrect_answers.map(answer => he.decode(answer))
+                            }
+                        })
                     }
                 })
             }
+            console.log(configObject);
         })
-        fetch(`${BASE_URL}amount=5&category=9&difficulty=medium&type=multiple`).then(resp => resp.json()).then(resp => console.log(resp["results"].map(question => he.decode(question.question))))
     }
 
     render() {
