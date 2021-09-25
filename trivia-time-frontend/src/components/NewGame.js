@@ -35,7 +35,8 @@ class NewGame extends Component {
                 },
                 body: JSON.stringify({
                     "category": {
-                        "name": resp["results"][0]["category"]
+                        "name": this.state.category === "" ? "Random"
+                                : resp["results"][0]["category"].split(": ").pop()
                     },
                     "game": {
                         "difficulty": resp["results"][0]["difficulty"],
@@ -62,7 +63,7 @@ class NewGame extends Component {
                         <Form.Label>Category</Form.Label>
                         <Form.Control as="select" name="category" onChange={this.handleOnChange}>
                             <option>Select Category</option>
-                            <option value="">Any Category</option>
+                            <option value="">Random</option>
                             <option value="9">General Knowledge</option>
                             <option value="10">Books</option>
                             <option value="11">Film</option>
