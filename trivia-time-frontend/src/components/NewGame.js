@@ -18,6 +18,7 @@ class NewGame extends Component {
     handleOnSubmit = (event) => {
         event.preventDefault();
         const BASE_URL = "https://opentdb.com/api.php?";
+        const BACKEND_URL = "http://localhost:3001/games"
         let NEW_GAME_URL;
 
         if (this.state.category === "") {
@@ -50,7 +51,7 @@ class NewGame extends Component {
                     }
                 })
             }
-            console.log(configObject);
+            fetch(`${BACKEND_URL}`, configObject).then(resp => resp.json()).then(game => console.log(game))
         })
     }
 
