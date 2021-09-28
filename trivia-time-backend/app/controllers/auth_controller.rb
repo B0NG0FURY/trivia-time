@@ -4,20 +4,19 @@ class AuthController < ApplicationController
     def create
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
-            session[:user_id] = user.id
-            puts session[:user_id]
+            token = encode_token(user_id: user.id)
             render json: {
+                jwt: token,
                 logged_in: true,
                 user: {
                     username: user.username,
                     id: user.id
                 }
-            }
+            }, status: :accepted
         else
             render json: {
-                status: 401,
-                error: ["username or password is incorrect"]
-            }
+                error: ["Invalid username or password"]
+            }, status: :unauthorized
         end
     end
 
