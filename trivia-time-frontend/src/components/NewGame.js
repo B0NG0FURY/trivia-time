@@ -28,11 +28,14 @@ class NewGame extends Component {
         }
 
         fetch(`${NEW_GAME_URL}`).then(resp => resp.json()).then(resp => {
+            const token = localStorage.getItem("jwt");
+
             let configObject = {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Accept: "application/json"
+                    Accept: "application/json",
+                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     "category": {
