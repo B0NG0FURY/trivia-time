@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
+    skip_before_action :authorized, only: [:create]
 
     def create
-        user = User.create(user_params)
-        if user.save
+        @user = User.create(user_params)
+        if @user.save
+            @token = encode_token(user_id: @user_id)
             render json: {
+                jwt: @token,
                 logged_in: true,
                 user: {
                     username: user.username,
