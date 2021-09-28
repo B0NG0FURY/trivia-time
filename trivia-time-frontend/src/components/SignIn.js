@@ -33,6 +33,7 @@ class SignIn extends Component {
         fetch("http://localhost:3001/login", configObject).then(resp => resp.json()).then(resp => {
             console.log(resp);
             if (resp.user) {
+                localStorage.setItem("jwt", resp.jwt);
                 let user = {
                     logged_in: resp.logged_in,
                     username: resp.user.username,
