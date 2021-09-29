@@ -48,12 +48,13 @@ class NewGame extends Component {
                             return {
                                 "text": he.decode(result.question),
                                 "correct_answer": he.decode(result.correct_answer),
-                                "incorrect_answers": result.incorrect_answers.map(answer => he.decode(answer))
+                                "incorrect_answers": `{${result.incorrect_answers.map(answer => he.decode(answer)).join(",")}}`
                             }
                         })
                     }
                 })
             }
+            console.log(configObject);
             fetch(`${BACKEND_URL}`, configObject).then(resp => resp.json()).then(game => console.log(game))
         })
     }
