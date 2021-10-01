@@ -10,9 +10,9 @@ export default function gameReducer(
         case "ADD_GAME":
             return {
                 ...state,
-                category: action.category,
-                difficulty: action.difficulty,
-                questions: action.questions
+                category: action.game.category,
+                difficulty: action.game.difficulty,
+                questions: action.game.questions
             };
 
         case "REMOVE_GAME":

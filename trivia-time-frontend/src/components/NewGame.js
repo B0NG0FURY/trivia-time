@@ -27,6 +27,7 @@ class NewGame extends Component {
             NEW_GAME_URL = `${BASE_URL}amount=${this.state.numberOfQuestions}&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`;
         }
 
+
         fetch(`${NEW_GAME_URL}`).then(resp => resp.json()).then(resp => {
             const token = localStorage.getItem("jwt");
 
@@ -55,7 +56,8 @@ class NewGame extends Component {
                 })
             }
             console.log(configObject);
-            fetch(`${BACKEND_URL}`, configObject).then(resp => resp.json()).then(game => console.log(game))
+
+            // fetch(`${BACKEND_URL}`, configObject).then(resp => resp.json()).then(game => console.log(game))
         })
     }
 
