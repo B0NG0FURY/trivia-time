@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import he from 'he';
+import { Redirect } from 'react-router-dom';
 
 class NewGame extends Component {
     state = {
@@ -17,48 +18,61 @@ class NewGame extends Component {
 
     handleOnSubmit = (event) => {
         event.preventDefault();
-        const BASE_URL = "https://opentdb.com/api.php?";
-        const BACKEND_URL = "http://localhost:3001/games"
-        let NEW_GAME_URL;
-
-        if (this.state.category === "") {
-            NEW_GAME_URL = `${BASE_URL}amount=${this.state.numberOfQuestions}&difficulty=${this.state.difficulty}&type=multiple`;
+        if (this.state.difficulty === "" || this.state.numberOfQuestions === "") {
+            this.setState({
+                ...this.state,
+                errors: "You must select both a difficulty and the number of questions to start."
+            });
         } else {
-            NEW_GAME_URL = `${BASE_URL}amount=${this.state.numberOfQuestions}&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`;
-        }
+            const BASE_URL = "https://opentdb.com/api.php?";
+            const BACKEND_URL = "http://localhost:3001/games"
+            let NEW_GAME_URL;
 
-
-        fetch(`${NEW_GAME_URL}`).then(resp => resp.json()).then(resp => {
-            const token = localStorage.getItem("jwt");
-
-            let configObject = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                    Authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    "category": {
-                        "name": this.state.category === "" ? "Random"
-                                : resp["results"][0]["category"].split(": ").pop()
-                    },
-                    "game": {
-                        "difficulty": resp["results"][0]["difficulty"],
-                        "questions_attributes": resp["results"].map(result => {
-                            return {
-                                "text": he.decode(result.question),
-                                "correct_answer": he.decode(result.correct_answer),
-                                "incorrect_answers": `{${result.incorrect_answers.map(answer => he.decode(answer)).join(",")}}`
-                            }
-                        })
-                    }
-                })
+            if (this.state.category === "") {
+                NEW_GAME_URL = `${BASE_URL}amount=${this.state.numberOfQuestions}&difficulty=${this.state.difficulty}&type=multiple`;
+            } else {
+                NEW_GAME_URL = `${BASE_URL}amount=${this.state.numberOfQuestions}&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`;
             }
-            console.log(configObject);
 
-            // fetch(`${BACKEND_URL}`, configObject).then(resp => resp.json()).then(game => console.log(game))
-        })
+
+            fetch(`${NEW_GAME_URL}`).then(resp => resp.json()).then(resp => {
+                const token = localStorage.getItem("jwt");
+
+                let configObject = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                        Authorization: `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        "category": {
+                            "name": this.state.category === "" ? "Random"
+                                    : resp["results"][0]["category"].split(": ").pop()
+                        },
+                        "game": {
+                            "difficulty": resp["results"][0]["difficulty"],
+                            "questions_attributes": resp["results"].map(result => {
+                                return {
+                                    "text": he.decode(result.question),
+                                    "correct_answer": he.decode(result.correct_answer),
+                                    "incorrect_answers": `{${result.incorrect_answers.map(answer => he. decode(answer)).join(",")}}`
+                                }
+                            })
+                        }
+                    })
+                }
+                console.log(configObject);
+                <Redirect
+                    to={{
+                        pathname="/user/game",
+                        state: { configObject: configObject }
+                    }}
+                />
+
+                // fetch(`${BACKEND_URL}`, configObject).then(resp => resp.json()).then(game => console.log (game))
+            })
+        }
     }
 
     render() {

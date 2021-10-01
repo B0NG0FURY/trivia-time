@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { Route, Link } from 'react-router-dom';
 import User from '../components/User';
 import NewGame from '../components/NewGame';
+import GameContainer from './GameContainer';
 
 class UserContainer extends Component {
     render() {
@@ -11,6 +12,10 @@ class UserContainer extends Component {
             <div className="App-header">
                 <User user={this.props.user} />
                 <Route path={`${this.props.match.url}/game/new`} component={NewGame} />
+                <Route 
+                    path={`${this.props.match.url}/game`}
+                    render={(props) => <GameContainer {...props} />}
+                />
             </div>
             : <div>
                 <h1>
