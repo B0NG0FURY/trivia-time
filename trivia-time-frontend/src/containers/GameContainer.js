@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from  'react-redux';
+import { fetchGame } from '../actions/fetchGame';
 
 class GameContainer extends Component {
     render() {
@@ -13,6 +14,14 @@ class GameContainer extends Component {
 
 function mapStateToProps(state) {
     return { game: state.game }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchGame: () => {
+            dispatch(fetchGame(this.props.location.state.configObject))
+        }
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameContainer);
