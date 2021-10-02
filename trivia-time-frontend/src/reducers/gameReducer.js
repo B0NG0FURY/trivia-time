@@ -2,7 +2,8 @@ export default function gameReducer(
     state = {
         category: "",
         difficulty: "",
-        questions: []
+        questions: [],
+        requesting: false
     },
     action
 ) {
@@ -12,8 +13,15 @@ export default function gameReducer(
                 ...state,
                 category: action.game.category,
                 difficulty: action.game.difficulty,
-                questions: action.game.questions
+                questions: action.game.questions,
+                requesting: false
             };
+
+        case "START_ADDING_GAME_REQUEST":
+            return {
+                ...state,
+                requesting: true
+            }
 
         case "REMOVE_GAME":
             return {

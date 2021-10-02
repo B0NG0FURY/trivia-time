@@ -6,7 +6,7 @@ class GameContainer extends Component {
     render() {
         return(
             <div>
-                this.props.game.receiving ? <h1>Loading Game...</h1> : null
+                this.props.game.requesting ? <h1>Loading Game...</h1> : null
             </div>
         )
     }
