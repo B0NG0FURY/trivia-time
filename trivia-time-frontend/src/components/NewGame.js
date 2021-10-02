@@ -63,16 +63,24 @@ class NewGame extends Component {
                     })
                 }
                 console.log(configObject);
-                <Redirect
-                    to={{
-                        pathname: "/user/game",
-                        state: { configObject: configObject }
-                    }}
-                />
+                this.setState({
+                    ...this.state,
+                    redirect: "/user/game",
+                    configObject: configObject
+                });
 
                 // fetch(`${BACKEND_URL}`, configObject).then(resp => resp.json()).then(game => console.log (game))
             })
         }
+    }
+
+    redirect = () => {
+        return <Redirect
+                    to={{
+                        pathname: this.state.redirect,
+                        state: { configObject: this.state.configObject }
+                    }}
+                />
     }
 
     render() {
@@ -119,6 +127,9 @@ class NewGame extends Component {
                     </Form.Group>
                     <Form.Control type="submit" style={{backgroundColor: "blue", color: "white"}} value="Start Game" />
                 </Form>
+
+                {this.state.redirect ? this.redirect() : null}
+
             </div>
         )
     }

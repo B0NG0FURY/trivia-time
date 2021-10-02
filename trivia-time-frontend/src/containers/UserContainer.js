@@ -13,7 +13,7 @@ class UserContainer extends Component {
                 <User user={this.props.user} />
                 <Route exact path={`${this.props.match.url}/game/new`} component={NewGame} />
                 <Route 
-                    path={`${this.props.match.url}/game`}
+                    exact path={`${this.props.match.url}/game`}
                     render={(props) => <GameContainer {...props} />}
                 />
             </div>
