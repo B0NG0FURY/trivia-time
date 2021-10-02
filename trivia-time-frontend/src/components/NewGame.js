@@ -56,7 +56,7 @@ class NewGame extends Component {
                                 return {
                                     "text": he.decode(result.question),
                                     "correct_answer": he.decode(result.correct_answer),
-                                    "incorrect_answers": `{${result.incorrect_answers.map(answer => he. decode(answer)).join(",")}}`
+                                    "incorrect_answers": `{${result.incorrect_answers.map(answer => he.decode(answer)).join(",")}}`
                                 }
                             })
                         }
@@ -65,7 +65,7 @@ class NewGame extends Component {
                 console.log(configObject);
                 <Redirect
                     to={{
-                        pathname="/user/game",
+                        pathname: "/user/game",
                         state: { configObject: configObject }
                     }}
                 />

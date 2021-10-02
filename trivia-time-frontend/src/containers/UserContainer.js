@@ -11,7 +11,7 @@ class UserContainer extends Component {
             this.props.user.logged_in ? 
             <div className="App-header">
                 <User user={this.props.user} />
-                <Route path={`${this.props.match.url}/game/new`} component={NewGame} />
+                <Route exact path={`${this.props.match.url}/game/new`} component={NewGame} />
                 <Route 
                     path={`${this.props.match.url}/game`}
                     render={(props) => <GameContainer {...props} />}
