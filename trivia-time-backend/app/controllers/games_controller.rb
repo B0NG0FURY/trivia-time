@@ -8,6 +8,7 @@ class GamesController < ApplicationController
             game.user_id = current_user.id
 
             if game.save
+                puts GameSerializer.new(game).to_serialized_json
                 render json: GameSerializer.new(game).to_serialized_json
             else
                 render json: {

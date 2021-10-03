@@ -3,7 +3,7 @@ export default function gameReducer(
         category: "",
         difficulty: "",
         questions: [],
-        requesting: false
+        loading: false
     },
     action
 ) {
@@ -14,13 +14,13 @@ export default function gameReducer(
                 category: action.game.category,
                 difficulty: action.game.difficulty,
                 questions: action.game.questions,
-                requesting: false
+                loading: false
             };
 
-        case "START_ADDING_GAME_REQUEST":
+        case "LOADING_GAME":
             return {
                 ...state,
-                requesting: true
+                loading: true
             }
 
         case "REMOVE_GAME":

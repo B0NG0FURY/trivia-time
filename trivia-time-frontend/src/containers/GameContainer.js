@@ -4,10 +4,14 @@ import { fetchGame } from '../actions/fetchGame';
 import Game from '../components/Game';
 
 class GameContainer extends Component {
+    componentDidMount() {
+        this.props.fetchGame(this.props.location.state.configObject);
+    }
+
     render() {
         return(
             <div>
-                {this.props.game.requesting ? <h1>Loading Game...</h1>
+                {this.props.game.loading ? <h1>Loading Game...</h1>
                 : <Game game={this.props.game} />}
             </div>
         )
@@ -20,8 +24,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchGame: () => {
-            dispatch(fetchGame(this.props.location.state.configObject))
+        fetchGame: (configObject) => {
+            dispatch(fetchGame(configObject))
         }
     };
 }
