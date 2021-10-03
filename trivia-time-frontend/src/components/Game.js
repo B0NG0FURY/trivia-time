@@ -6,10 +6,11 @@ class Game extends Component {
         return(
             <div>
                 <p>
-                    Difficulty: {this.props.game.difficulty},     
-                    {this.props.game.questions.length} questions
+                    Category: {this.props.game.category.name}, Difficulty: {this.props.game.difficulty}, {this.props.game.questions.length} questions
                 </p>
-                {this.props.game.questions.map(question => <Question question={question} />)}
+                <ol>
+                    {this.props.game.questions.map(question => <li><Question question={question} /></li>)}
+                </ol>
             </div>
         )
     }

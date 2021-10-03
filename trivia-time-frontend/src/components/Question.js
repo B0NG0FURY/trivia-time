@@ -18,7 +18,7 @@ class Question extends Component {
                         <Card.Text>
                             {this.props.question.text}
                         </Card.Text>
-                        <ul>
+                        <ul className="answers">
                             {this.allAnswers()}
                         </ul>
                     </Card.Body>

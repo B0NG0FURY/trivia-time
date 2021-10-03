@@ -40,3 +40,8 @@
 .new-game {
   margin-top: 30px;
 }
+
+
+ul.answers {
+  list-style-type: none;
+}
