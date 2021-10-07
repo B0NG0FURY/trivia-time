@@ -3,6 +3,8 @@ export default function gameReducer(
         category: "",
         difficulty: "",
         questions: [],
+        answered: 0,
+        correct: 0,
         loading: false
     },
     action
@@ -21,7 +23,7 @@ export default function gameReducer(
             return {
                 ...state,
                 loading: true
-            }
+            };
 
         case "REMOVE_GAME":
             return {
@@ -30,6 +32,22 @@ export default function gameReducer(
                 difficulty: "",
                 questions: []
             };
+
+        case "ANSWERED_CORRECT":
+            let answered = state.answered + 1;
+            let correct = state.correct + 1;
+            return {
+                ...state,
+                answered: answered,
+                correct: correct
+            };
+
+        case "ANSWERED_INCORRECT":
+            let increase = state.answered + 1;
+            return {
+                ...state,
+                answered: increase
+            }
 
         default:
             return state;

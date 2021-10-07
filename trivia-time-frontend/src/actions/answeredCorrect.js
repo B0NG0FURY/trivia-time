@@ -1,0 +1,1 @@
+export const answeredCorrect = () => ({ type: "ANSWERED_CORRECT" })
