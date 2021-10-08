@@ -38,6 +38,10 @@ class NewGame extends Component {
             fetch(`${NEW_GAME_URL}`).then(resp => resp.json()).then(resp => {
                 const token = localStorage.getItem("jwt");
 
+                function normalize(answer) {
+                    return answer.split(", ").join(" ");
+                }
+
                 let configObject = {
                     method: "POST",
                     headers: {
@@ -55,8 +59,10 @@ class NewGame extends Component {
                             "questions_attributes": resp["results"].map(result => {
                                 return {
                                     "text": he.decode(result.question),
-                                    "correct_answer": he.decode(result.correct_answer),
-                                    "incorrect_answers": `{${result.incorrect_answers.map(answer => he.decode(answer)).join(",")}}`
+                                    "correct_answer": normalize(he.decode(result.correct_answer)),
+                                    "incorrect_answers": `{${result.incorrect_answers.map(answer => normalize(he.decode(answer)))}}`
+                                    // "correct_answer": he.decode(result.correct_answer).split(", ").join(" "),
+                                    // // "incorrect_answers": `{${result.incorrect_answers.map(answer => he.decode(answer).split(", ").join(" ")).join()}}`
                                 }
                             })
                         }

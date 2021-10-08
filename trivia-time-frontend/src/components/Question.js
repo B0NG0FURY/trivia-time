@@ -5,8 +5,7 @@ class Question extends Component {
 
     allAnswers = () => {
         // console.log(this.props.question);
-        let answers = this.props.question.incorrect_answers.map(answer => answer);
-        answers.splice(Math.floor(Math.random() * 4), 0, this.props.question.correct_answer);
+        let answers = this.props.question.all_answers;
         return answers.map(answer => <li id={`answers-${this.props.number}`}><Button onClick={this.handleOnClick}>{answer}</Button></li>)
     }
 
