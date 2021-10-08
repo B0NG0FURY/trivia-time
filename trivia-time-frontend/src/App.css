@@ -41,7 +41,15 @@
   margin-top: 30px;
 }
 
+.questions {
+  margin-right: 45px;
+}
 
-ul.answers {
+
+.question-answer-lists {
   list-style-type: none;
+}
+
+#finish-game {
+  margin-left: 19px;
 }

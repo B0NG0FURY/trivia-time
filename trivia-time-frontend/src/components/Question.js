@@ -17,9 +17,11 @@ class Question extends Component {
 
         if (event.target.innerText === this.props.question.correct_answer) {
             event.target.style.backgroundColor = "green";
+            event.target.innerText = "Correct";
             this.props.answeredCorrect();
         } else {
             event.target.style.backgroundColor = "red";
+            event.target.innerText = "Incorrect";
             this.props.answeredIncorrect();
         }
 
@@ -29,13 +31,13 @@ class Question extends Component {
 
     render() {
         return(
-            <div>
+            <div className="questions">
                 <Card style={{ color: "black"}}>
                     <Card.Body>
                         <Card.Text>
-                            {this.props.question.text}
+                            {`${this.props.number}. ${this.props.question.text}`}
                         </Card.Text>
-                        <ul className="answers">
+                        <ul className="question-answer-lists">
                             {this.allAnswers()}
                         </ul>
                     </Card.Body>
