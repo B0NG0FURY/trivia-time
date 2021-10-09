@@ -1,5 +1,6 @@
 export default function gameReducer(
     state = {
+        id: "",
         category: "",
         difficulty: "",
         questions: [],
@@ -13,6 +14,7 @@ export default function gameReducer(
         case "ADD_GAME":
             return {
                 ...state,
+                id: action.game.id,
                 category: action.game.category,
                 difficulty: action.game.difficulty,
                 questions: action.game.questions,
@@ -28,9 +30,13 @@ export default function gameReducer(
         case "REMOVE_GAME":
             return {
                 ...state,
+                id: "",
                 category: "",
                 difficulty: "",
-                questions: []
+                questions: [],
+                answered: 0,
+                correct: 0,
+                loading: false
             };
 
         case "ANSWERED_CORRECT":

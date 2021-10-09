@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import he from 'he';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class NewGame extends Component {
     state = {
@@ -9,6 +10,10 @@ class NewGame extends Component {
         difficulty: "",
         numberOfQuestions: ""
     };
+
+    componentDidMount() {
+        this.props.dispatch({ type: "REMOVE_GAME" });
+    }
 
     handleOnChange = (event) => {
         this.setState({
@@ -141,4 +146,8 @@ class NewGame extends Component {
     }
 }
 
-export default NewGame;
+function mapStateToProps(state) {
+    return { game: state.game }
+}
+
+export default connect(mapStateToProps)(NewGame);
