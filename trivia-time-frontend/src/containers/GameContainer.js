@@ -4,17 +4,70 @@ import { fetchGame } from '../actions/fetchGame';
 import { answeredCorrect } from '../actions/answeredCorrect';
 import { answeredIncorrect } from '../actions/answeredIncorrect';
 import Game from '../components/Game';
+import Summary from '../components/Summary';
+import Button from 'react-bootstrap/Button';
 
 class GameContainer extends Component {
+    state = {
+        gameOver: false
+    }
+
     componentDidMount() {
         this.props.fetchGame(this.props.location.state.configObject);
+    }
+
+    renderGameState = () => {
+        if (this.state.gameOver) {
+            return <Summary game={this.props.game} />
+        } else {
+            return (
+                <div>
+                    <Game 
+                        game={this.props.game}
+                        answeredCorrect={this.props.answeredCorrect}
+                        answeredIncorrect={this.props.answeredIncorrect} 
+                    />
+                    <Button 
+                        id="finish-game"
+                        disabled={this.buttonState()}
+                        onClick={this.finishGame}
+                    >
+                      Finish Game
+                    </Button>
+                </div>
+            )
+        }
+    }
+
+    buttonState = () => this.props.game.answered === this.props.game.questions.length ? false : true
+
+    finishGame = () => {
+        // const token = localStorage.getItem("jwt");
+
+        // let configObject = {
+            // method: "PATCH",
+            // headers: {
+                // "Content-Type": "application/json",
+                // Accept: "application/json",
+                // Authorization: `Bearer ${token}`
+            // },
+            // body: JSON.stringify({
+                // "game": {
+                    // "score": this.props.game.correct
+                // }
+            // })
+        // }
+
+        this.setState({
+            gameOver: true
+        });
     }
 
     render() {
         return(
             <div>
                 {this.props.game.loading ? <h1>Loading Game...</h1>
-                : <Game game={this.props.game} answeredCorrect={this.props.answeredCorrect} answeredIncorrect={this.props.answeredIncorrect} />}
+                : this.renderGameState()}
             </div>
         )
     }
