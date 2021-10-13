@@ -4,11 +4,18 @@ export default function statsReducer(
         favCategory: "",
         favDifficulty: "",
         totalAnswered: "",
-        avgCorrect: ""
+        avgCorrect: "",
+        loading: false
     },
     action
 ) {
     switch(action.type) {
+        case "LOADING_STATS":
+            return {
+                ...state,
+                loading: true
+            }
+            
         case "ADD_STATS":
             return {
                 ...state,
