@@ -3,27 +3,31 @@ import Card from 'react-bootstrap/Card';
 import { fetchStats } from '../actions/fetchStats';
 
 class Stats extends Component {
+    componentDidMount() {
+        this.props.fetchStats(this.props.userId)
+    }
     render() {
         return(
             <div>
-                <Card style={{ color: "black" }}>
-                    <Card.Header>Stats</Card.Header>
-                    <Card.Text>
-                        Games Played:
-                    </Card.Text>
-                    <Card.Text>
-                        Favorite Category:
-                    </Card.Text>
-                    <Card.Text>
-                        Favorite Difficulty:
-                    </Card.Text>
-                    <Card.Text>
-                        Questions Answered:
-                    </Card.Text>
-                    <Card.Text>
-                        Average Correct:
-                    </Card.Text>
-                </Card>
+                {this.props.stats.loading ? <h1>Loading Stats...</h1>
+                : <Card style={{ color: "black" }}>
+                  <Card.Header>Stats</Card.Header>
+                  <Card.Text>
+                      Games Played:
+                  </Card.Text>
+                  <Card.Text>
+                      Favorite Category:
+                  </Card.Text>
+                  <Card.Text>
+                      Favorite Difficulty:
+                  </Card.Text>
+                  <Card.Text>
+                      Questions Answered:
+                  </Card.Text>
+                  <Card.Text>
+                      Average Correct:
+                  </Card.Text>
+              </Card>}
             </div>
         )
     }

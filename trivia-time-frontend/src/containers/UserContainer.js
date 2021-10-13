@@ -22,7 +22,7 @@ class UserContainer extends Component {
                 />
                 <Route
                     exact path="/user/:userId/stats"
-                    render={(props) => <Stats {...props} user={this.props.user} />}
+                    render={(props) => <Stats {...props} userId={this.props.user.id} />}
                 />
             </div>
             : <div>
