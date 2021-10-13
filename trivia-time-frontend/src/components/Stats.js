@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
+import { fetchStats } from '../actions/fetchStats';
 
 class Stats extends Component {
     render() {
@@ -31,6 +32,14 @@ class Stats extends Component {
 function mapStateToProps(state) {
     return {
         stats: state.stats
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchStats: (userId) => {
+            dispatch(fetchStats(userId))
+        }
     }
 }
 
