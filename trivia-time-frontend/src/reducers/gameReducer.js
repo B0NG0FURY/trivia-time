@@ -53,7 +53,7 @@ export default function gameReducer(
             return {
                 ...state,
                 answered: increase
-            }
+            };
 
         default:
             return state;

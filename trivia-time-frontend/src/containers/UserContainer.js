@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import User from '../components/User';
 import NewGame from '../components/NewGame';
 import GameContainer from './GameContainer';
+import Stats from '../components/Stats';
 
 class UserContainer extends Component {
     render() {
@@ -11,10 +12,17 @@ class UserContainer extends Component {
             this.props.user.logged_in ? 
             <div className="App-header">
                 <User user={this.props.user} />
-                <Route exact path={`${this.props.match.url}/game/new`} component={NewGame} />
+                <Route 
+                    exact path={`${this.props.match.url}/game/new`}
+                    render={(props) => <NewGame {...props} user={this.props.user} />}
+                />
                 <Route 
                     exact path={`${this.props.match.url}/game`}
                     render={(props) => <GameContainer {...props} />}
+                />
+                <Route
+                    exact path="/user/:userId/stats"
+                    render={(props) => <Stats {...props} user={this.props.user} />}
                 />
             </div>
             : <div>

@@ -16,8 +16,8 @@ class User extends Component {
         return(
             <div>
                 <h4>Hello {this.props.user.username}</h4>
-                <NavLink to="/user/game/new" exact style={this.navStyle} activeStyle={{background: "darkblue"}}>New Game</NavLink>
-                <NavLink to="/user/stats" exact style={this.navStyle} activeStyle={{background: "darkblue"}}>Stats</NavLink>
+                <NavLink to={`/user/${this.props.user.id}/game/new`} exact style={this.navStyle} activeStyle={{background: "darkblue"}}>New Game</NavLink>
+                <NavLink to={`/user/${this.props.user.id}/stats`} exact style={this.navStyle} activeStyle={{background: "darkblue"}}>Stats</NavLink>
             </div>
         )
     }

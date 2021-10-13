@@ -8,11 +8,13 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import userReducer from './reducers/userReducer';
 import gameReducer from './reducers/gameReducer';
+import statsReducer from './reducers/statsReducer';
 import reportWebVitals from './reportWebVitals';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  game: gameReducer
+  game: gameReducer,
+  stats: statsReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

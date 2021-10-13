@@ -75,7 +75,7 @@ class NewGame extends Component {
                 console.log(configObject);
                 this.setState({
                     ...this.state,
-                    redirect: "/user/game",
+                    redirect: `/user/${this.props.user.id}/game`,
                     configObject: configObject
                 });
 

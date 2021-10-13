@@ -13,13 +13,13 @@ class App extends Component {
       <div className="App">
         <h1>Trivia Time</h1>
         <Router>
-          <div>
+          <div className="App-header">
             <Route exact path="/" component={Welcome} />
             <Route exact path="/login"
               render={routerProps => <SignIn />} />
             <Route exact path="/signup" component={SignUp} />
             <Route 
-              path="/user"
+              path="/user/:userId"
               render={routerProps => <UserContainer {...routerProps} user={this.props.user} />}
             />
           </div>

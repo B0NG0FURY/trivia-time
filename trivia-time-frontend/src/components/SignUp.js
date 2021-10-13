@@ -45,7 +45,7 @@ class SignUp extends Component {
                 this.props.addUser(user);
                 this.setState({
                     ...this.state,
-                    redirect: "/user"
+                    redirect: `/user/${resp.user.id}`
                 });
             } else {
                 this.setState({
