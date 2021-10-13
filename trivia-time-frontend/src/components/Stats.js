@@ -28,4 +28,10 @@ class Stats extends Component {
     }
 }
 
-export default Stats;
+function mapStateToProps(state) {
+    return {
+        stats: state.stats
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Stats);
