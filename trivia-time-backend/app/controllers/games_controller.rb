@@ -26,11 +26,11 @@ class GamesController < ApplicationController
         game = Game.find_by_id(params[:game][:id])
         if game && game.update(score: params[:game][:score])
             render json: {
-                success: "Score updated successfully"
+                status: "Score updated successfully"
             }
         else
             render json: {
-                errors: game.errors.full_messages
+                status: game.errors.full_messages
             }
         end
     end

@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import he from 'he';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { BASE_URL } from '../api/baseUrl';
 
 class NewGame extends Component {
     state = {
@@ -29,8 +30,6 @@ class NewGame extends Component {
                 errors: "You must select both a difficulty and the number of questions to start."
             });
         } else {
-            const BASE_URL = "https://opentdb.com/api.php?";
-            const BACKEND_URL = "http://localhost:3001/games"
             let NEW_GAME_URL;
 
             if (this.state.category === "") {

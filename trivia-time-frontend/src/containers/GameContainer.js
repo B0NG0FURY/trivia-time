@@ -6,6 +6,7 @@ import { answeredIncorrect } from '../actions/answeredIncorrect';
 import Game from '../components/Game';
 import Summary from '../components/Summary';
 import Button from 'react-bootstrap/Button';
+import { BACKEND_URL } from '../api/backendUrl';
 
 class GameContainer extends Component {
     state = {
@@ -42,21 +43,24 @@ class GameContainer extends Component {
     buttonState = () => this.props.game.answered === this.props.game.questions.length ? false : true
 
     finishGame = () => {
-        // const token = localStorage.getItem("jwt");
+        const token = localStorage.getItem("jwt");
 
-        // let configObject = {
-            // method: "PATCH",
-            // headers: {
-                // "Content-Type": "application/json",
-                // Accept: "application/json",
-                // Authorization: `Bearer ${token}`
-            // },
-            // body: JSON.stringify({
-                // "game": {
-                    // "score": this.props.game.correct
-                // }
-            // })
-        // }
+        let configObject = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                "game": {
+                    "id": this.props.game.id,
+                    "score": this.props.game.correct
+                }
+            })
+        }
+
+        fetch(`${BACKEND_URL}/${this.props.game.id}`, configObject).then(resp => resp.json()).then(resp => console.log(resp["status"]));
 
         this.setState({
             gameOver: true
