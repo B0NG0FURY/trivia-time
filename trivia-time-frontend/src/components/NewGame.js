@@ -43,7 +43,7 @@ class NewGame extends Component {
                 const token = localStorage.getItem("jwt");
 
                 function normalize(answer) {
-                    return answer.split(", ").join(" ");
+                    return answer.split(",").join(" ").split(" ").filter(word => word !== "").join(" ");
                 }
 
                 let configObject = {

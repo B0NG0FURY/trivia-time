@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 
 class Summary extends Component {
+    capitalize = (string) => string[0].toUpperCase() + string.slice(1)
+
     render() {
         return(
             <div className="summary">
@@ -16,7 +18,7 @@ class Summary extends Component {
                         Category: {`${this.props.game.category.name}`}
                     </Card.Text>
                     <Card.Text>
-                        Difficulty: {`${this.props.game.difficulty}`}
+                        Difficulty: {`${this.capitalize(this.props.game.difficulty)}`}
                     </Card.Text>
                     <Card.Text>
                         Score: {`${this.props.game.correct}/${this.props.game.questions.length}`}
