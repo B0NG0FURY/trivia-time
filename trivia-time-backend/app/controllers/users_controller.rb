@@ -20,6 +20,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def stats
+        if logged_in?
+            user = User.find_by_id(params[:id])
+        end
+    end
+
     private
 
     def user_params
