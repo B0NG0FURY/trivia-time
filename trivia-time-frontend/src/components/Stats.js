@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import { fetchStats } from '../actions/fetchStats';
+import { connect } from 'react-redux';
 
 class Stats extends Component {
     componentDidMount() {
