@@ -5,7 +5,17 @@ import { connect } from 'react-redux';
 
 class Stats extends Component {
     componentDidMount() {
-        this.props.fetchStats(this.props.userId)
+        const token = localStorage.getItem("jwt");
+
+        const configObject = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+        this.props.fetchStats(this.props.userId, configObject)
     }
     render() {
         return(
@@ -14,19 +24,19 @@ class Stats extends Component {
                 : <Card style={{ color: "black" }}>
                   <Card.Header>Stats</Card.Header>
                   <Card.Text>
-                      Games Played:
+                      Games Played: {this.props.stats.gamesPlayed}
                   </Card.Text>
                   <Card.Text>
-                      Favorite Category:
+                      Favorite Category: {this.props.stats.favCategory}
                   </Card.Text>
                   <Card.Text>
-                      Favorite Difficulty:
+                      Favorite Difficulty: {this.props.stats.favDifficulty}
                   </Card.Text>
                   <Card.Text>
-                      Questions Answered:
+                      Questions Answered: {this.props.stats.questionsAnswered}
                   </Card.Text>
                   <Card.Text>
-                      Average Correct:
+                      Average Correct: {this.props.stats.avgCorrect}%
                   </Card.Text>
               </Card>}
             </div>
@@ -42,8 +52,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchStats: (userId) => {
-            dispatch(fetchStats(userId))
+        fetchStats: (userId, configObject) => {
+            dispatch(fetchStats(userId, configObject))
         }
     }
 }

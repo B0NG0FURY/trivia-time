@@ -3,7 +3,7 @@ export default function statsReducer(
         gamesPlayed: "",
         favCategory: "",
         favDifficulty: "",
-        totalAnswered: "",
+        questionsAnswered: "",
         avgCorrect: "",
         loading: false
     },
@@ -19,11 +19,12 @@ export default function statsReducer(
         case "ADD_STATS":
             return {
                 ...state,
-                gamesPlayed: action.gamesPlayed,
-                favCategory: action.favCategory,
-                favDifficulty: action.favDifficulty,
-                totalAnswered: action.totalAnswered,
-                avgCorrect: action.avgCorrect
+                gamesPlayed: action.stats.games_played,
+                favCategory: action.stats.fav_category,
+                favDifficulty: action.stats.fav_difficulty,
+                questionsAnswered: action.stats.questions_answered,
+                avgCorrect: action.stats.avg_correct,
+                loading: false
             };
 
         default:

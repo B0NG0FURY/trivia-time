@@ -25,10 +25,7 @@ class NewGame extends Component {
     handleOnSubmit = (event) => {
         event.preventDefault();
         if (this.state.difficulty === "" || this.state.numberOfQuestions === "") {
-            this.setState({
-                ...this.state,
-                errors: "You must select both a difficulty and the number of questions to start."
-            });
+            window.alert("You must select a difficulty and number of questions to start a new game.");
         } else {
             let NEW_GAME_URL;
 
