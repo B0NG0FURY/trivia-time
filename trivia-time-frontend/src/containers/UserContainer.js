@@ -12,6 +12,10 @@ class UserContainer extends Component {
             this.props.user.logged_in ? 
             <div className="App-header">
                 <User user={this.props.user} />
+                <Route
+                    exact path={`${this.props.match.url}`}
+                    render={() => <img src={"/trivia-time.jpg"} width="350" height="350"/>}
+                />
                 <Route 
                     exact path={`${this.props.match.url}/game/new`}
                     render={(props) => <NewGame {...props} user={this.props.user} />}
