@@ -17,7 +17,7 @@ class User < ApplicationRecord
     def fav_difficulty
         games = self.games.map {|game| self.games.filter {|filter| filter.difficulty === game.difficulty}}
         sorted = games.sort_by {|games| games.length}.reverse
-        sorted[0][0].difficulty
+        sorted[0][0].difficulty.capitalize
     end
 
     def questions_answered

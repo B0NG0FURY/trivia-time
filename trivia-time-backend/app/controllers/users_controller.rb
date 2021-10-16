@@ -21,9 +21,10 @@ class UsersController < ApplicationController
     end
 
     def stats
-        if logged_in?
+        # if logged_in?
             user = User.find_by_id(params[:id])
-        end
+            render json: StatsSerializer.new(user).to_serialized_json
+        # end
     end
 
     private
