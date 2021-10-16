@@ -69,7 +69,7 @@ class GameContainer extends Component {
 
     render() {
         return(
-            <div>
+            <div className="user-component">
                 {this.props.game.loading ? <h1>Loading Game...</h1>
                 : this.renderGameState()}
             </div>

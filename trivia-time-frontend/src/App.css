@@ -37,8 +37,21 @@
   }
 }
 
-.new-game {
+.user-component {
   margin-top: 30px;
+}
+
+.user {
+  position: absolute;
+  top: 70px;
+}
+
+.user h4 {
+  padding-bottom: 10px;
+}
+
+.user-card {
+  padding: 0px 20px 15px 20px;
 }
 
 .questions {

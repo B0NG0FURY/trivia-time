@@ -19,9 +19,9 @@ class Stats extends Component {
     }
     render() {
         return(
-            <div>
+            <div className="user-component">
                 {this.props.stats.loading ? <h1>Loading Stats...</h1>
-                : <Card style={{ color: "black" }}>
+                : <Card style={{ color: "black" }} className="user-card">
                   <Card.Header>Stats</Card.Header>
                   <Card.Text>
                       Games Played: {this.props.stats.gamesPlayed}

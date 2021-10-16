@@ -74,6 +74,7 @@ class SignUp extends Component {
                             value={this.state.username}
                         />
                     </Form.Group>
+                    <br/>
                     <Form.Group>
                         <Form.Control
                             type="password"
@@ -83,6 +84,7 @@ class SignUp extends Component {
                             value={this.state.password}
                         />
                     </Form.Group>
+                    <br/>
                     <Form.Group>
                         <Form.Control
                             type="password"
@@ -92,7 +94,12 @@ class SignUp extends Component {
                             value={this.state.passwordConfirmation}
                         />
                     </Form.Group>
-                    <Form.Control type="submit" value="Create Account" />
+                    <br/>
+                    <Form.Control
+                        type="submit"
+                        value="Create Account"
+                        style={{ backgroundColor: "blue", color: "white" }}
+                    />
                 </Form>
                 { this.state.redirect ? <Redirect to={this.state.redirect} /> : null }
             </div>
