@@ -132,6 +132,7 @@ class NewGame extends Component {
                             <option value="20">20</option>
                         </Form.Control>
                     </Form.Group>
+                    <br></br>
                     <Form.Control type="submit" style={{backgroundColor: "blue", color: "white"}} value="Start Game" />
                 </Form>
 

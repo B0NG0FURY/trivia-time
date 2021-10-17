@@ -22,7 +22,7 @@ class GameContainer extends Component {
             return <Summary game={this.props.game} />
         } else {
             return (
-                <div>
+                <div className="game">
                     <Game 
                         game={this.props.game}
                         answeredCorrect={this.props.answeredCorrect}
@@ -35,6 +35,8 @@ class GameContainer extends Component {
                     >
                       Finish Game
                     </Button>
+                    <br></br>
+                    <br></br>
                 </div>
             )
         }

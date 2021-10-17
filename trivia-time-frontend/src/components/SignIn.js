@@ -55,8 +55,8 @@ class SignIn extends Component {
 
     render() {
         return(
-            <div>
-                {this.state.errors ? <li>{this.state.errors}</li> : null}
+            <div className="raise-up">
+                {this.state.errors ? <div className="error"><li>{this.state.errors}</li></div> : null}
                 <Form onSubmit={this.handleSubmit} >
                     <Form.Group>
                         <Form.Control

@@ -6,7 +6,7 @@ class Summary extends Component {
 
     render() {
         return(
-            <div>
+            <div className="summary">
                 <Card style={{ color: "black" }} className="user-card">
                     <Card.Header>
                         Game #{`${this.props.game.id}`}

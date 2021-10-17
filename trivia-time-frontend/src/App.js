@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Trivia Time</h1>
+        <h1 className="title">Trivia Time</h1>
         <Router>
           <div className="App-header">
             <Route exact path="/" component={Welcome} />

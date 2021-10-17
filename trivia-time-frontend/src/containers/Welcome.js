@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default class Welcome extends Component {
     render() {
         return(
-            <div >
+            <div className="raise-up">
                 <h1>Welcome</h1>
                 <Link to="/login">
                     <Button size="lg">Log In</Button>

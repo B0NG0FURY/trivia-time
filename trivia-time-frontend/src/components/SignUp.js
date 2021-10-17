@@ -57,12 +57,12 @@ class SignUp extends Component {
     }
 
     handleErrors = () => {
-        return this.state.errors.map(error => <li>{error}</li>)
+        return <div className="error">{this.state.errors.map(error => <li>{error}</li>)}</div>
     }
     
     render() {
         return(
-            <div>
+            <div className="raise-up">
                 { this.state.errors ? this.handleErrors() : null }
                 <Form onSubmit={this.handleSubmit} >
                     <Form.Group>
