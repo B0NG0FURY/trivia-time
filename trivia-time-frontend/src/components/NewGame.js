@@ -62,8 +62,6 @@ class NewGame extends Component {
                                     "text": he.decode(result.question),
                                     "correct_answer": normalize(he.decode(result.correct_answer)),
                                     "incorrect_answers": `{${result.incorrect_answers.map(answer => normalize(he.decode(answer)))}}`
-                                    // "correct_answer": he.decode(result.correct_answer).split(", ").join(" "),
-                                    // // "incorrect_answers": `{${result.incorrect_answers.map(answer => he.decode(answer).split(", ").join(" ")).join()}}`
                                 }
                             })
                         }
@@ -75,8 +73,6 @@ class NewGame extends Component {
                     redirect: `/user/${this.props.user.id}/game`,
                     configObject: configObject
                 });
-
-                // fetch(`${BACKEND_URL}`, configObject).then(resp => resp.json()).then(game => console.log (game))
             })
         }
     }

@@ -4,9 +4,8 @@ import { Card, Button } from 'react-bootstrap';
 class Question extends Component {
 
     allAnswers = () => {
-        // console.log(this.props.question);
         let answers = this.props.question.all_answers;
-        return answers.map(answer => <li id={`answers-${this.props.number}`}><Button onClick={this.handleOnClick}>{answer}</Button></li>)
+        return answers.map(answer => <li key={`answers-${this.props.number}`}><Button onClick={this.handleOnClick}>{answer}</Button></li>)
     }
 
     handleOnClick = (event) => {
