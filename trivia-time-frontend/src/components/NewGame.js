@@ -93,7 +93,8 @@ class NewGame extends Component {
                 <Form onSubmit={this.handleOnSubmit}>
                     <Form.Group>
                         <Form.Label>Category</Form.Label>
-                        <Form.Control as="select" name="category" onChange={this.handleOnChange}>
+                        <Form.Control as="select" name="category" onChange={this.handleOnChange}
+                        className="form-spacing">
                             <option>Select Category</option>
                             <option value="">Random</option>
                             <option value="9">General Knowledge</option>
@@ -111,7 +112,7 @@ class NewGame extends Component {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Difficulty</Form.Label>
-                        <Form.Control as="select" name="difficulty" onChange={this.handleOnChange}>
+                        <Form.Control as="select" name="difficulty" onChange={this.handleOnChange} className="form-spacing">
                             <option>Select Difficulty</option>
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
