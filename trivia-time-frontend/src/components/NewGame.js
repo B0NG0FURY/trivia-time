@@ -88,7 +88,7 @@ class NewGame extends Component {
 
     render() {
         return(
-            <div className="user-component">
+            <div className="user-component new-game">
                 <h3>Start A New Game</h3>
                 <Form onSubmit={this.handleOnSubmit}>
                     <Form.Group>
