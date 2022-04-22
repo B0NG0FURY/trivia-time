@@ -5,7 +5,7 @@ class Question extends Component {
 
     allAnswers = () => {
         let answers = this.props.question.all_answers;
-        return answers.map(answer => <li key={`answers-${this.props.number}`}><Button onClick={this.handleOnClick}>{answer}</Button></li>)
+        return answers.map(answer => <li key={`answers-${this.props.number}`}><Button onClick={this.handleOnClick} style={{border: "2px solid black"}}>{answer}</Button></li>)
     }
 
     handleOnClick = (event) => {
@@ -31,7 +31,9 @@ class Question extends Component {
     render() {
         return(
             <div className="questions">
-                <Card style={{ color: "black"}}>
+                <Card 
+                    style={{ color: "black", border: "6px solid blue"}}
+                >
                     <Card.Body>
                         <Card.Text>
                             {`${this.props.number}. ${this.props.question.text}`}

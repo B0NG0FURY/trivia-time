@@ -104,6 +104,7 @@ body {
 
 .question-answer-lists {
   list-style-type: none;
+  margin: auto;
 }
 
 .question-answer-lists li.question {
